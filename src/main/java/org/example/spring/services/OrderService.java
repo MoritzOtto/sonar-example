@@ -147,7 +147,7 @@ public class OrderService {
         if (value % 10 == 0) {
             return value;
         } else {
-            throw new RuntimeException("WTF");
+            throw new IllegalArgumentException("WTF");
         }
     }
 
