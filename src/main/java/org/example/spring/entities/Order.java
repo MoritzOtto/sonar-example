@@ -3,7 +3,7 @@ package org.example.spring.entities;
 import java.util.List;
 
 public class Order {
-    private int id;
+    private Long id;
     private String description;
 
     public String getOrderDate() {
@@ -14,11 +14,11 @@ public class Order {
         this.orderDate = orderDate;
     }
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

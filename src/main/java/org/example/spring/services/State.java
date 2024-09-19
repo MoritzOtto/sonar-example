@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.Setter;
 
 public class State {
+    private State() {}
+
     @Setter
     @Getter
     private static boolean isActive;

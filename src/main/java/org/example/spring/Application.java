@@ -42,7 +42,7 @@ public class Application {
         orderService.uOrder(1L, "TEST", "2024-01-02");
         Order order = orderService.rOrder(1L);
         orderService.cOrder(order);
-        orderService.runJob();
+        System.out.println(orderService.runJob().contains("x"));
     }
 
 }
