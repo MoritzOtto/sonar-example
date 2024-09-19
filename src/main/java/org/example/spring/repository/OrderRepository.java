@@ -22,6 +22,6 @@ public class OrderRepository {
     }
 
     public void save(Order order) {
-        logger.log(Level.ALL, order.toString());
+        logger.log(Level.ALL, order != null ? order.toString() : "null");
     }
 }

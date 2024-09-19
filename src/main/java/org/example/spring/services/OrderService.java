@@ -22,6 +22,7 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class OrderService {
+    public static final String NOCH_NICHT_FREIGEGEBEN = "noch nicht freigegeben";
     public final OrderRepository orderRepository;
     public final OrderItemRepository orderItemRepository;
     public final JobRepository jobRepository;
@@ -103,14 +104,14 @@ public class OrderService {
         }
         if (o.getAddress().contains("wichtig")) {
             if (o.getPrice() > 1000) {
-                o.setDescription("noch nicht freigegeben");
+                o.setDescription(NOCH_NICHT_FREIGEGEBEN);
                 orderRepository.save(o);
             } else {
                 o.setDescription("Freigegeben weil wichtig");
                 orderRepository.save(o);
             }
         } else {
-            o.setDescription("noch nicht freigegeben");
+            o.setDescription(NOCH_NICHT_FREIGEGEBEN);
             orderRepository.save(o);
         }
     }
@@ -152,15 +153,15 @@ public class OrderService {
 
     public boolean canOrder(Order o) {
         logger.log(Level.ALL, "canOrder");
-        State.setActive(!Objects.equals(o.getDescription(), "noch nicht freigegeben"));
-        return !Objects.equals(o.getDescription(), "noch nicht freigegeben");
+        State.setActive(!Objects.equals(o.getDescription(), NOCH_NICHT_FREIGEGEBEN));
+        return !Objects.equals(o.getDescription(), NOCH_NICHT_FREIGEGEBEN);
     }
 
-    public void dOrder(Long i_id) {
+    public void dOrder(Long iId) {
         logger.log(Level.ALL, "dOrder");
-        List<Order> l_O = orderRepository.findAll();
-        List<Order> theReturnValue = l_O.stream()
-            .filter(theListValueOfOrders -> !Objects.equals(theListValueOfOrders.getId(), i_id))
+        List<Order> lO = orderRepository.findAll();
+        List<Order> theReturnValue = lO.stream()
+            .filter(theListValueOfOrders -> !Objects.equals(theListValueOfOrders.getId(), iId))
             .toList();
         theReturnValue.forEach(orderRepository::save);
     }

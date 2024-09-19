@@ -35,7 +35,7 @@ public class Application {
         }
         int i = orderService.calcMax(new Order());
         if (i > MAGIC_NUMBER) {
-            System.out.println("pro");
+            orderService.cOrder(new Order());
         }
         orderService.cOrder(new Order());
         orderService.dOrder(1L);
