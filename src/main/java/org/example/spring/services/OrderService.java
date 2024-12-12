@@ -95,7 +95,7 @@ public class OrderService {
         }
 
         xRechnungCreator.execute();
-        if (order.getPrice() % 3 == 0) {
+        if (o.getPrice() % 3 == 0) {
             logger.log(Level.ALL, "Was soll das? ");
         }
     }
