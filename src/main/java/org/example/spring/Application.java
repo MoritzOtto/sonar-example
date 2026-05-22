@@ -6,6 +6,7 @@ import org.example.spring.repository.MaxRepository;
 import org.example.spring.repository.OrderItemRepository;
 import org.example.spring.repository.OrderRepository;
 import org.example.spring.services.OrderService;
+import org.example.spring.services.XInvoiceCreator;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -26,7 +27,7 @@ public class Application {
         var orderService = new OrderService(
             new OrderRepository(), new OrderItemRepository(),
             new JobRepository(),
-            new MaxRepository());
+            new MaxRepository(), new XInvoiceCreator());
 
         orderService.getUserData("ssss");
         boolean b = orderService.canOrder(new Order());

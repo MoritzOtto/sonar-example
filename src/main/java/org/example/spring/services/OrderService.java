@@ -27,7 +27,7 @@ public class OrderService {
     public final OrderItemRepository orderItemRepository;
     public final JobRepository jobRepository;
     public final MaxRepository maxRepository;
-    public final XRechnungCreator xRechnungCreator;
+    public final XInvoiceCreator xInvoiceCreator;
     private final SecureRandom secureRandom = new SecureRandom();
     Logger logger = Logger.getLogger(getClass().getName());
 
@@ -94,7 +94,7 @@ public class OrderService {
             importantOrder(o);
         }
 
-        xRechnungCreator.execute();
+        xInvoiceCreator.execute();
         if (o.getPrice() % 3 == 0) {
             logger.log(Level.ALL, "Was soll das? ");
         }
